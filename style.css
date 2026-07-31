@@ -1,0 +1,280 @@
+:root {
+  --bg: #0c0c0c;
+  --line: rgb(255 255 255 / 10%);
+  --text: #ededea;
+  --text-dim: #7a7a77;
+  --accent: #10b981;
+  --error: #ef4444;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+}
+
+p {
+  color: var(--text-dim);
+  font-size: 1.1rem;
+  margin: 0 0 16px;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  font-size: clamp(2.6rem, 4.5vw, 3.6rem);
+  margin: 0 0 16px;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  letter-spacing: 0.02em;
+  margin: 0 0 20px;
+}
+
+.tag-mark {
+  color: var(--accent);
+}
+
+/* Grid */
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  min-height: 100vh;
+  position: relative;
+}
+
+.box {
+  border: 1px solid var(--line);
+  margin: -1px 0 0 -1px;
+  padding: clamp(36px, 6vh, 64px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.box > .tag {
+  flex: 0 0 auto;
+}
+
+/* Brand box */
+
+.box-brand {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 48px;
+}
+
+.brand-logo {
+  width: clamp(120px, 20vh, 190px);
+  height: auto;
+  flex-shrink: 0;
+}
+
+.brand-desc {
+  max-width: 380px;
+  font-size: 1.2rem;
+}
+
+/* Connect box */
+
+.ip-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 20px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+  max-width: 400px;
+}
+
+.prompt {
+  font-family: var(--font-mono);
+  color: var(--accent);
+  font-size: 1.2rem;
+}
+
+.ip-row code {
+  font-size: 1.2rem;
+  color: var(--text);
+  flex: 1;
+}
+
+.copy-btn {
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 4px 0;
+  transition: color 0.15s ease;
+}
+
+.copy-btn:hover {
+  color: var(--text);
+}
+
+.copy-btn.copied {
+  color: var(--accent);
+}
+
+.copy-btn.failed {
+  color: var(--error);
+}
+
+.status-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  margin: 0;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--text-dim);
+  flex-shrink: 0;
+}
+
+.status-dot.online {
+  background: var(--accent);
+}
+
+.status-dot.offline {
+  background: var(--error);
+}
+
+/* Community box */
+
+.box-community p {
+  max-width: 380px;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 14px 26px;
+  margin-top: 24px;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  text-decoration: none;
+  color: var(--text);
+  white-space: nowrap;
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.cta:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.cta-arrow {
+  transition: transform 0.15s ease;
+}
+
+.cta:hover .cta-arrow {
+  transform: translate(2px, -2px);
+}
+
+.social-links {
+  display: flex;
+  gap: 22px;
+  margin-top: 28px;
+}
+
+.social-links a {
+  display: inline-flex;
+  color: var(--text-dim);
+  transition: color 0.15s ease;
+}
+
+.social-links a svg {
+  width: 21px;
+  height: 21px;
+}
+
+.social-links a:hover {
+  color: var(--text);
+}
+
+.footer-note {
+  margin-top: 24px;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+/* Responsive */
+
+@media (width <= 860px), (height <= 700px) {
+  html,
+  body {
+    height: auto;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    min-height: 0;
+  }
+
+  .box {
+    margin: -1px 0 0;
+    padding: 48px 28px;
+  }
+
+  .box-brand {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .brand-logo {
+    width: 110px;
+  }
+}
