@@ -1,5 +1,6 @@
 const SERVER_ADDRESS = 'play.ukkin.net';
 const STATUS_API_URL = `https://api.mcsrvstat.us/3/${SERVER_ADDRESS}`;
+const STATUS_REQUEST_TIMEOUT_MS = 5_000;
 
 const copyBtn = document.getElementById('copy-btn');
 copyBtn.addEventListener('click', async () => {
@@ -27,7 +28,9 @@ async function loadServerStatus() {
   const text = document.getElementById('status-text');
 
   try {
-    const response = await fetch(STATUS_API_URL);
+    const response = await fetch(STATUS_API_URL, {
+      signal: AbortSignal.timeout(STATUS_REQUEST_TIMEOUT_MS),
+    });
     if (!response.ok) {
       throw new Error(`Status API returned ${response.status}`);
     }
