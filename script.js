@@ -1,6 +1,6 @@
 const SERVER_ADDRESS = 'play.ukkin.net';
 const STATUS_API_URL = `https://api.mcsrvstat.us/3/${SERVER_ADDRESS}`;
-const STATUS_REQUEST_TIMEOUT_MS = 5_000;
+const STATUS_REQUEST_TIMEOUT_MS = 10_000;
 
 const copyBtn = document.getElementById('copy-btn');
 copyBtn.addEventListener('click', async () => {
